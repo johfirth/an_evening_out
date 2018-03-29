@@ -1,0 +1,24 @@
+Tasks:
+
+-API keys:
+Yelp
+BandsinTown
+SeatGeek
+GooglePlaces
+Fandango
+Weather
+
+-Html
+-CSS/Bootstrap
+
+-Logic:
+
+JS API Logic
+JS Display on screen
+JS Make Package Options
+
+
+Breakdown:
+Two option packages logic each
+HTML/Bootstrap- John
+API Call Logic- Adrienne
