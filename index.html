@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>An Evening Out</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<header>
+    <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+              <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+              A Evening Out
+            </a>
+    </nav>
+</header>
+
+<body>
+    <section id = 'search-container' class = 'container'>
+        <div class = 'row'>
+            <div id = "search-field" class = 'col-md-6'>
+                <div class = 'card'>
+                    <div class = "card-header">
+                            Get something to do!
+                    </div>
+                    <div class="form-group">
+                        <p>Where?</p>
+                        <input id = 'location-input' class = "form-control" type="text" placeholder="City Name">
+                        <p>When?</p>
+                        <input id = 'location-input' class = "form-control" type="date" placeholder="MM/DD/YYYY">
+                        <br>
+                        <button id = 'search-button' class = "btn btn-default col-md-offset-">Search</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div id "result-field" class = "col-md-6 jumbotron">
+
+            </div>
+        </div>
+    </section>
+    
+</body>
+<script src = 'display.js'></script>
+</html>
