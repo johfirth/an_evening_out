@@ -9,7 +9,8 @@ $.ajax({
 });
 
 var events;
-var tmqueryUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?' + events + 'apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
+var tmqueryUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateInput + 
+'&city=' + locationInput + 'apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
 
 $.ajax({
     url: tmqueryUrl,
@@ -28,3 +29,6 @@ $.ajax({
     console.log(fanqueryUrl);
     console.log(response);
 });
+
+
+https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=2018-03-29T00:00:01Z&endDateTime=2018-03-29T11:59:00Z$city=washington&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d
