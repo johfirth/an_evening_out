@@ -17,27 +17,28 @@
             </a>
     </nav>
 </header>
-
+<br>
 <body>
-    <section id = 'search-container' class = 'container'>
+    <section id = 'search-container' class = 'container-fluid'>
         <div class = 'row'>
-            <div id = "search-field" class = 'col-md-6'>
+            <div id = "search-field" class = 'col-md-4 ml-3'>
                 <div class = 'card'>
                     <div class = "card-header">
                             Get something to do!
                     </div>
                     <div class="form-group">
-                        <p>Where?</p>
-                        <input id = 'location-input' class = "form-control" type="text" placeholder="City Name">
-                        <p>When?</p>
-                        <input id = 'date-input' class = "form-control" type="date" placeholder="MM/DD/YYYY">
+                        <p class='offset-md-1'>Where?</p>
+                        <input id = 'location-input' class = "form-control col-md-10 offset-md-1" type="text" placeholder="City Name">
                         <br>
-                        <button id = 'search-button' class = "btn btn-default col-md-offset-">Search</button>
+                        <p class='offset-md-1'>When?</p>
+                        <input id = 'date-input' class = "form-control col-md-10 offset-md-1" type="date" placeholder="MM/DD/YYYY">
+                        <br>
+                        <button id = 'search-button' class = "btn btn-default offset-md-1">Search</button>
                     </div>
                 </div>
                 
             </div>
-            <div id = "result-field" class = "col-md-6 jumbotron">
+            <div id = "result-field" class = "col-md-7 ml-5 jumbotron">
 
             </div>
         </div>

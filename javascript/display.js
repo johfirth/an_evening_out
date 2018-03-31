@@ -5,7 +5,7 @@ var dateFormattedStart;
 var dateFormattedEnd;
 
 function cardCreate(response){
-    var newResultCard = $('<div class = "card">');
+    var newResultCard = $('<div class = "card col-md-6">');
     var cardTitle = $('<h4 class="card-title text-center">');
     var cardImage = $('<img>');
     var cardButton = $('<a class = "btn btn-default">')
