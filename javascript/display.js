@@ -3,6 +3,7 @@ var locationInput = '';
 var dateInput;
 var dateFormattedStart;
 var dateFormattedEnd;
+var eventTypes = ['sports','concerts','theater']
 
 function cardCreate(response){
     var newResultCard = $('<div class = "card col-md-6">');
@@ -25,35 +26,16 @@ function cardCreate(response){
     
 }
 
-function sportDisplay (){
-    var tmQueryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateFormattedStart + '&endDateTime' + dateFormattedEnd +
-'&city=' + locationInput + '&keyword=sports&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
-
+function eventDisplay (){
+    for (var i = 0; i < eventTypes.length; i++) {
+        var event = eventTypes[i];
+        var tmQueryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateFormattedStart + '&endDateTime' + dateFormattedEnd +
+            '&city=' + locationInput + '&keyword=' + event + '&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
 $.ajax({
     url: tmQueryURL,
     method: 'GET',
     }).then(function (response) {cardCreate(response)})
-    };
-
-function concertDisplay (){
-    var tmQueryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateFormattedStart + '&endDateTime' + dateFormattedEnd +
-'&city=' + locationInput + '&keyword=concert&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
-
-$.ajax({
-    url: tmQueryURL,
-    method: 'GET',
-    }).then(function (response) {cardCreate(response)})
-    };
-
-function theaterDisplay (){
-    var tmQueryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateFormattedStart + '&endDateTime' + dateFormattedEnd +
-'&city=' + locationInput + '&keyword=theater&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
-
-$.ajax({
-    url: tmQueryURL,
-    method: 'GET',
-    }).then(function (response) {cardCreate(response)})
-    };
+    }};
 
 $('#search-button').on("click", function(){
     locationInput = $('#location-input').val().trim();
@@ -62,8 +44,7 @@ $('#search-button').on("click", function(){
     $('date-input').val('');
     dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD'))+'T00:00:01Z';
     dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD'))+'T11:59:00Z';
-    sportDisplay();
-    concertDisplay();
-    theaterDisplay();
+    eventDisplay();
+
 
 })
