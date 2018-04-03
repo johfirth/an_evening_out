@@ -64,15 +64,14 @@ function correctImageSize(eventImages){
     }}
 
 
-//google maps//
-function initMap() {
-    var dc = { lat: 38.9072, lng: -77.0369};
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: dc
-    });
-    var marker = new google.maps.Marker({
-        position: dc,
-        map: map
-    });
-};
+
+function foodSearch(response) {
+    var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
+        + lat + ',' + lng + '&radius=250&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
+    $.ajax({
+        url: placesURL,
+        method: 'GET',
+    }).then(function foodResponse {
+
+    })
+}
