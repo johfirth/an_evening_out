@@ -48,7 +48,7 @@ $('#search-button').on("click", function () {
 })
 //google maps//
 function initMap() {
-    var dc = { lat: 38.9072, lng: 77.0369 };
+    var dc = { lat: 38.9072, lng: -77.0369};
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: dc
