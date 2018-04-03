@@ -1,4 +1,3 @@
-
 var locationInput = '';
 var dateInput;
 var dateFormattedStart;

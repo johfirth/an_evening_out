@@ -1,17 +1,6 @@
-var movies;
-var yelpqueryUrl = 'https://api.yelp.com/v3/businesses/search?' + movies + "&api_key=732xb6PcRAiiGY8yQwpqznOPz8u4xy4AGNwsrpEyXCqptQ4ZR5s8wrx8Y4kvC0x3tSwFD3AnDXn-Lo_SJXPsVU29hhh5GT3R5K_F8ZAim13ehQF3Ec0hCEeRw9G6WnYx';
-$.ajax({
-    url: yelpqueryUrl,
-    method: 'GET',
-}).then(function (response) {
-    console.log(yelpqueryUrl);
-    console.log(response);
-});
-
 var events;
 var tmqueryUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateInput + 
 '&city=' + locationInput + 'apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
-
 $.ajax({
     url: tmqueryUrl,
     method: 'GET',
@@ -30,5 +19,35 @@ $.ajax({
     console.log(response);
 });
 
+//google places//
+var map;
+var service;
+var infowindow;
 
-https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=2018-03-29T00:00:01Z&endDateTime=2018-03-29T11:59:00Z$city=washington&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d
+function initialize() {
+    var location = new google.maps.LatLng(-33.8665433, 151.1956316);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 15
+    });
+
+    var request = {
+        location: location,
+        radius: '1',
+        type: ['restaurant'],
+        openNow: true,
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+};
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        var place = results[i];
+        createMarker(results[i]);
+      }
+    }
+  };
+
