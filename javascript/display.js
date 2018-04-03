@@ -45,16 +45,6 @@ $('#search-button').on("click", function () {
     dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD')) + 'T00:00:01Z';
     dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD')) + 'T11:59:00Z';
     eventDisplay();
-})
-//google maps//
-function initMap() {
-    var dc = { lat: 38.9072, lng: -77.0369};
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: dc
-    });
-    var marker = new google.maps.Marker({
-        position: dc,
-        map: map
-    });
-};
+    callback();
+});
+
