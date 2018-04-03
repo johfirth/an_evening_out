@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,7 @@
     </nav>
 </header>
 <br>
+
 <body>
     <section id = 'search-container' class = 'container-fluid'>
         <div class = 'row'>
@@ -35,23 +37,28 @@
                     </div>
                     <div class="form-group">
                         <p class='offset-md-1'>Where?</p>
-                        <input id = 'location-input' class = "form-control col-md-10 offset-md-1" type="text" placeholder="City Name">
+                        <input id='location-input' class="form-control col-md-10 offset-md-1" type="text" placeholder="City Name">
                         <br>
                         <p class='offset-md-1'>When?</p>
-                        <input id = 'date-input' class = "form-control col-md-10 offset-md-1" type="date" placeholder="MM/DD/YYYY">
+                        <input id='date-input' class="form-control col-md-10 offset-md-1" type="date" placeholder="MM/DD/YYYY">
                         <br>
-                        <button id = 'search-button' class = "btn btn-default offset-md-1">Search</button>
+                        <button id='search-button' class="btn btn-default offset-md-1">Search</button>
                     </div>
                 </div>
-                
+                <h4>Google Maps</h4>
+                <div id="map"></div>
+
             </div>
-            <div id = "result-field" class = "col-md-7 ml-5 jumbotron">
+            <div id="result-field" class="col-md-7 ml-5 jumbotron">
 
             </div>
         </div>
     </section>
     <script src = 'javascript/display.js'></script>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98&callback=initMap"></script>
+    <script src='javascript/display.js'></script>
+    <script src='javascript\api.js'></script>
 </body>
 
 
