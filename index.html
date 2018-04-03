@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>An Evening Out</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 
 </head>
 <header>
     <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-              Let's Go ... 
-            </a>
+        <a class="navbar-brand" href="#">
+          Let's Go ... 
+        </a>
+        <ul class = 'nav nav-tabs'>
+            <li class = 'nav-item'>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn">Sign In</button>
+            </li>
+        </ul>    
     </nav>
 </header>
 <br>
 <body>
     <section id = 'search-container' class = 'container-fluid'>
         <div class = 'row'>
-            <div id = "search-field" class = 'col-md-4 ml-3'>
+            <div id = "search-field" class = 'col-md-4 ml-3 sl-3'>
                 <div class = 'card'>
                     <div class = "card-header">
                             Get something to do!
@@ -44,6 +51,7 @@
         </div>
     </section>
     <script src = 'javascript/display.js'></script>
+
 </body>
 
 

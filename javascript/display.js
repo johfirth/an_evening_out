@@ -5,24 +5,31 @@ var dateFormattedStart;
 var dateFormattedEnd;
 var eventTypes = ['sports','concerts','theater']
 
+
 function cardCreate(response){
     var newResultCard = $('<div class = "card col-md-6">');
     var cardTitle = $('<h4 class="card-title text-center">');
+    var cardInfo =$('<p class = "text-center">');
     var cardImage = $('<img>');
-    var cardButton = $('<a class = "btn btn-default">')
+    var cardButton = $('<a class = "btn btn-default">');
     var eventName = response._embedded.events[0].name;
-    var eventImage = response._embedded.events[0].images[0].url;
+    var eventImages = response._embedded.events[0].images;
     var buttonLink = response._embedded.events[0].url;
+    var eventImageSized;
+    var eventDate = response._embedded.events[0].dates.start.localDate;
+    var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))
+    // correctImageSize(eventImages);
     cardTitle.text(eventName);
     newResultCard.append(cardTitle);
-    cardImage.attr('src', eventImage);
+    cardInfo.text(formattedEventDate);
+    newResultCard.append(cardInfo)
+    cardImage.attr('src', eventImageSized);
     newResultCard.append(cardImage);
     cardButton.text('Buy Now')
     cardButton.attr('href', buttonLink);
     newResultCard.append(cardButton);
-
-
     $('#result-field').append(newResultCard);
+    console.log(response)
     
 }
 
@@ -38,6 +45,7 @@ $.ajax({
     }};
 
 $('#search-button').on("click", function(){
+    $('#result-field').empty();
     locationInput = $('#location-input').val().trim();
     dateInput = $('#date-input').val();
     $('#location-input').val('');
@@ -47,4 +55,12 @@ $('#search-button').on("click", function(){
     eventDisplay();
 
 
+
 })
+
+function correctImageSize(eventImages){
+    for (var key in eventImages){
+        
+    }}
+
+
