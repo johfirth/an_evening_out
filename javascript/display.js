@@ -4,25 +4,32 @@ var dateFormattedStart;
 var dateFormattedEnd;
 var eventTypes = ['sports', 'concerts', 'theater']
 
+
 function cardCreate(response) {
     var newResultCard = $('<div class = "card col-md-6">');
     var cardTitle = $('<h4 class="card-title text-center">');
+    var cardInfo =$('<p class = "text-center">');
     var cardImage = $('<img>');
-    var cardButton = $('<a class = "btn btn-default">')
+    var cardButton = $('<a class = "btn btn-default">');
     var eventName = response._embedded.events[0].name;
-    var eventImage = response._embedded.events[0].images[0].url;
+    var eventImages = response._embedded.events[0].images;
     var buttonLink = response._embedded.events[0].url;
+    var eventImageSized;
+    var eventDate = response._embedded.events[0].dates.start.localDate;
+    var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))
+    // correctImageSize(eventImages);
     cardTitle.text(eventName);
     newResultCard.append(cardTitle);
-    cardImage.attr('src', eventImage);
+    cardInfo.text(formattedEventDate);
+    newResultCard.append(cardInfo)
+    cardImage.attr('src', eventImageSized);
     newResultCard.append(cardImage);
     cardButton.text('Buy Now')
     cardButton.attr('href', buttonLink);
     newResultCard.append(cardButton);
-
-
     $('#result-field').append(newResultCard);
-
+    console.log(response)
+    
 }
 
 function eventDisplay() {
@@ -33,11 +40,12 @@ function eventDisplay() {
         $.ajax({
             url: tmQueryURL,
             method: 'GET',
-        }).then(function (response) { cardCreate(response) })
+        }).then(function (response) { cardCreate(response); foodSearch(response)})
     }
 };
 
 $('#search-button').on("click", function () {
+    $('#result-field').empty();
     locationInput = $('#location-input').val().trim();
     dateInput = $('#date-input').val();
     $('#location-input').val('');
@@ -45,6 +53,27 @@ $('#search-button').on("click", function () {
     dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD')) + 'T00:00:01Z';
     dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD')) + 'T11:59:00Z';
     eventDisplay();
-    callback();
-});
 
+
+
+})
+
+function correctImageSize(eventImages){
+    for (var key in eventImages){
+        
+    }}
+
+
+
+function foodSearch(response) {
+    var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
+    var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
+    var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
+        + lat + ',' + lng + '&radius=250&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
+    $.ajax({
+        url: placesURL,
+        method: 'GET',
+    }).then(function (foodResponse) {
+        console.log (foodResponse + "yum")
+    })
+}
