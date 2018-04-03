@@ -40,7 +40,7 @@ function eventDisplay() {
         $.ajax({
             url: tmQueryURL,
             method: 'GET',
-        }).then(function (response) { cardCreate(response) })
+        }).then(function (response) { cardCreate(response); foodSearch(response)})
     }
 };
 
@@ -66,12 +66,14 @@ function correctImageSize(eventImages){
 
 
 function foodSearch(response) {
+    var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
+    var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
     var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
         + lat + ',' + lng + '&radius=250&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
     $.ajax({
         url: placesURL,
         method: 'GET',
-    }).then(function foodResponse {
-
+    }).then(function (foodResponse) {
+        console.log (foodResponse + "yum")
     })
 }
