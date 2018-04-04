@@ -7,7 +7,10 @@ var movies = ['Black Panther', 'Ready Player One', 'A Wrinkle in Time', 'A Quiet
 var emailInput;
 var passwordInput;
 $(document).ready(function () {
-    $('#client-form').hide();
+    $('#newclient-form').hide();
+    $('#returnclient-form').hide();
+    $('#search-container').hide();
+
     function cardCreate(response) {
         var newResultCard = $('<div class = "card col-md-6">');
         var cardTitle = $('<h4 class="card-title text-center">');
@@ -93,43 +96,71 @@ $(document).ready(function () {
         })
     };
 
+    $('#newsign-in').on('click', function () {
+        $('#newclient-form').show();
+        $('#newsign-in').hide();
+        $('#returnUser').hide();
+    });
+    $('#returnUser').on('click', function () {
+        $('#returnclient-form').show();
+        $('#newsign-in').hide();
+        $('#returnUser').hide();
+    });
+
+    var config = {
+        apiKey: "AIzaSyDCVf4BToH0S_xwSGgkaxSQUs2wKeuWVoI",
+        authDomain: "project-1-ats.firebaseapp.com",
+        databaseURL: "https://project-1-ats.firebaseio.com",
+        projectId: "project-1-ats",
+        storageBucket: "project-1-ats.appspot.com",
+        messagingSenderId: "1066374942062"
+    };
+    firebase.initializeApp(config);
+
+    var email = '';
+    var password = '';
+    var oldEmail = '';
+    var oldPassword = '';
+
+    function newUser() {
+        event.preventDefault();
+        email = $('#newemailInput').val();
+        password = $('#newpasswordInput').val();
+        console.log(email);
+        console.log(password);
+    }
+    function oldUser() {
+        event.preventDefault();
+        oldEmail = $('#oldEmail').val();
+        oldPassword = $('#oldPassword').val();
+        console.log(email);
+        console.log(password);
+    }
+
+    $('#signupUser').on('click', function () {
+        newUser(email, password);
+
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+                console.log(error);
+            };
+        })
+        $('#search-container').show();
+        $('#signupUser').hide();
+        $('#newclient-form').hide();
+    });
+
     $('#sign-in').on('click', function () {
-        $('#client-form').show();
-        $('#sign-in').hide();
+        oldUser();
+        firebase.auth().signInWithEmailAndPassword(oldEmail, oldPassword).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        });
+       $('#search-container').show();
+       $('#sign-in').hide();
+       $('#returnclient-form').hide();
     });
 
 });
-
-var config = {
-    apiKey: "AIzaSyDCVf4BToH0S_xwSGgkaxSQUs2wKeuWVoI",
-    authDomain: "project-1-ats.firebaseapp.com",
-    databaseURL: "https://project-1-ats.firebaseio.com",
-    projectId: "project-1-ats",
-    storageBucket: "project-1-ats.appspot.com",
-    messagingSenderId: "1066374942062"
-};
-firebase.initializeApp(config);
-
-var email = '';
-var password = '';
-
-function newUser() {
-    event.preventDefault();
-    email = $('#emailInput').val();
-    password = $('#passwordInput').val();
-    console.log(email);
-    console.log(password);
-}
-
-$('#signupUser').on('click', function () {
-    newUser(email, password);
-
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    if (errorCode == 'auth/weak-password') {
-        console.log(error);
-    };
-})
-});
-

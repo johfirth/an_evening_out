@@ -26,20 +26,34 @@
         </a>
         <ul class='nav nav-tabs'>
             <li class='nav-item'>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn" id='sign-in'>Sign In</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn" id='newsign-in'>Sign Up</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn" id='returnUser'>Sign In</button>
             </li>
         </ul>
-        <form id="client-form">
+        <form id="newclient-form">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" id="newemailInput" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                <input type="password" class="form-control" id="newpasswordInput" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary" id='signupUser'>Submit</button>
+
+        </form>
+        <form id="returnclient-form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="oldEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" id='signinUser'>Submit</button>
 
         </form>
     </nav>
