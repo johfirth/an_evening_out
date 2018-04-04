@@ -3,8 +3,10 @@ var dateInput;
 var dateFormattedStart;
 var dateFormattedEnd;
 var eventTypes = ['sports', 'concerts', 'theater']
+var movies = ['Black Panther', 'Ready Player One', 'A Wrinkle in Time', 'A Quiet Place'];
 
-
+$(document).ready(function () {
+$('#client-form').hide();
 function cardCreate(response) {
     var newResultCard = $('<div class = "card col-md-6">');
     var cardTitle = $('<h4 class="card-title text-center">');
@@ -43,6 +45,16 @@ function eventDisplay() {
         }).then(function (response) { cardCreate(response); foodSearch(response)})
     }
 };
+function movieDisplay(){
+    var graceQuery = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + dateInput + '&api_key=hm7sgu5m4ff6d54afvm688mz';
+    $.ajax({
+      url: graceQuery,
+      method: 'GET',
+    }).then(function(response){
+      console.log(graceQuery);
+      console.log(response);
+      });
+    };
 
 $('#search-button').on("click", function () {
     $('#result-field').empty();
@@ -53,6 +65,7 @@ $('#search-button').on("click", function () {
     dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD')) + 'T00:00:01Z';
     dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD')) + 'T11:59:00Z';
     eventDisplay();
+    movieDisplay();
 
 
 
@@ -76,4 +89,11 @@ function foodSearch(response) {
     }).then(function (foodResponse) {
         console.log (foodResponse + "yum")
     })
-}
+};
+
+$('#sign-in').on('click', function (){
+    $('#client-form').show();
+    $('#sign-in').hide();
+});
+
+});

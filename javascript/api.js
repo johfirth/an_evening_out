@@ -9,13 +9,14 @@ $.ajax({
   console.log(response);
 });
 
-var movies;
-var graceQuery = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + dateInput + '';
-
+function movieDisplay(){
+var graceQuery = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + dateInput + '&api_key=hm7sgu5m4ff6d54afvm688mz';
 $.ajax({
   url: graceQuery,
   method: 'GET',
 }).then(function(response){
   console.log(graceQuery);
   console.log(response);
-})
+  cardCreate();
+});
+}
