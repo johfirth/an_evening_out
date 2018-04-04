@@ -11,17 +11,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyDCVf4BToH0S_xwSGgkaxSQUs2wKeuWVoI",
-            authDomain: "project-1-ats.firebaseapp.com",
-            databaseURL: "https://project-1-ats.firebaseio.com",
-            projectId: "project-1-ats",
-            storageBucket: "project-1-ats.appspot.com",
-            messagingSenderId: "1066374942062"
-        };
-        firebase.initializeApp(config);
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
@@ -42,16 +31,17 @@
         </ul>
         <form id="client-form">
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-primary" id='signupUser'>Submit</button>
+
+        </form>
     </nav>
 </header>
 <br>
