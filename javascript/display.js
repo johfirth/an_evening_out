@@ -17,6 +17,7 @@ function cardCreate(response) {
     var eventImageSized;
     var eventDate = response._embedded.events[0].dates.start.localDate;
     var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))
+    foodCardInfo = $('<p class = "text-center">')
     // correctImageSize(eventImages);
     cardTitle.text(eventName);
     newResultCard.append(cardTitle);
@@ -28,7 +29,9 @@ function cardCreate(response) {
     cardButton.attr('href', buttonLink);
     newResultCard.append(cardButton);
     $('#result-field').append(newResultCard);
+    foodSearch(response)
     console.log(response)
+    // console.log(placesToEat)
     
 }
 
@@ -40,7 +43,8 @@ function eventDisplay() {
         $.ajax({
             url: tmQueryURL,
             method: 'GET',
-        }).then(function (response) { cardCreate(response); foodSearch(response)})
+        }).then(function (response) { cardCreate(response);
+})
     }
 };
 
@@ -58,22 +62,22 @@ $('#search-button').on("click", function () {
 
 })
 
-function correctImageSize(eventImages){
-    for (var key in eventImages){
-        
-    }}
-
-
-
 function foodSearch(response) {
     var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
     var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
     var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
-        + lat + ',' + lng + '&radius=250&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
+        + lat + ',' + lng + '&radius=150&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
     $.ajax({
         url: placesURL,
         method: 'GET',
     }).then(function (foodResponse) {
-        console.log (foodResponse + "yum")
+        var newResultCard = $('<div class = "card col-md-6">');
+        var cardTitle = $('<h4 class="card-title text-center">');
+        var cardInfo =$('<p class = "text-center">');
+        placesToEat = foodResponse.results[0].name;
+        cardTitle.text(placesToEat);
+        newResultCard.append(cardTitle)
+        $('#result-field').append(newResultCard);
+     
     })
 }
