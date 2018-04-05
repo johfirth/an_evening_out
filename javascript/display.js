@@ -2,7 +2,7 @@ var locationInput = '';
 var dateInput;
 var dateFormattedStart;
 var dateFormattedEnd;
-var eventTypes = ['sports', 'concerts', 'theater']
+var eventTypes = ['sports', 'concerts', 'theater', 'family']
 var emailInput;
 var passwordInput;
 $(document).ready(function () {
@@ -85,8 +85,8 @@ $(document).ready(function () {
             url: placesURL,
             method: 'GET',
         }).then(function (foodResponse) {
-            var newResultCard = $('<div class = "card col-md-6">');
-            var cardTitle = $('<h4 class="card-title text-center">');
+            var newResultCard = $('<div class = "card">');
+            var cardTitle = $('<div class="card-header text-center">');
             var cardInfo =$('<p class = "text-center">');
             placesToEat = foodResponse.results[0].name;
             cardTitle.text(placesToEat);
