@@ -35,7 +35,7 @@ $(document).ready(function () {
         newResultCard.append(cardButton);
         $('#result-field').append(newResultCard);
         $('#result-field').append(verticalSpace);
-        console.log(response)
+        console.log(response + "place")
 
     }
 
@@ -77,6 +77,15 @@ $(document).ready(function () {
 
     })
 
+    var OpenForBusiness;
+    
+    function youOpen (isOpen){
+        if (isOpen === true){
+            OpenForBusiness = "Open"
+        } else {
+        OpenForBusiness = "Closed"}}
+
+
     function foodSearch(response) {
         cardCreate(response);
         var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
@@ -89,23 +98,26 @@ $(document).ready(function () {
         }).then(function (foodResponse) {
             var newResultCard = $('<div class = "card">');
             var cardTitle = $('<div class="card-header text-center">');
-            var cardInfo =$('<p class = "text-center">');
+            var cardInfo1 =$('<p class = "text-center">');
+            var cardInfo2 =$('<p class = "text-center">');
             var verticalSpace = $('<br>')
+            var isOpen = foodResponse.results[0].opening_hours.open_now
+            var rating = foodResponse.results[0].rating
+            youOpen(isOpen)
             placesToEat = foodResponse.results[0].name;
-            console.log(response)
+            console.log(foodResponse);
             cardTitle.text(placesToEat);
             newResultCard.append(cardTitle)
+            cardInfo1.text("Currently: " + OpenForBusiness);
+            cardInfo2.text("Rating: " + rating)
+            newResultCard.append(cardInfo1);
+            newResultCard.append(cardInfo2)
             $('#food-field').append(newResultCard);
             $('#food-field').append(verticalSpace);
          
         })
     }
 
-    function correctImageSize(eventImages) {
-        for (var key in eventImages) {
-
-        }
-    }
 
 
 
