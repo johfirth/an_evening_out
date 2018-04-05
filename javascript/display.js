@@ -166,7 +166,7 @@ $(document).ready(function () {
         })
         $('#search-container').show();
         $('#signupUser').hide();
-        $('#newclient-form').hide();
+        $('#new-user-modal').hide();
     });
 
     $('#sign-in').on('click', function () {
@@ -177,7 +177,7 @@ $(document).ready(function () {
         });
        $('#search-container').show();
        $('#sign-in').hide();
-       $('#returnclient-form').hide();
+       $('#return-user-modal').hide();
     });
 
 });
