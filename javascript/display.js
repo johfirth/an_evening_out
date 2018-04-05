@@ -43,7 +43,7 @@ $(document).ready(function () {
         for (var i = 0; i < eventTypes.length; i++) {
             var event = eventTypes[i];
             var tmQueryURL = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=' + dateFormattedStart + '&endDateTime' + dateFormattedEnd +
-                '&city=' + locationInput + '&keyword=' + event + '&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
+                '&city=' + locationInput + '&keyword=' + event + '&sort=date,asc&apikey=RIQwqKGOlNCjdsTch4qC32WaCBv94S9d';
             $.ajax({
                 url: tmQueryURL,
                 method: 'GET',
@@ -82,7 +82,7 @@ $(document).ready(function () {
         var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
         var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
         var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
-            + lat + ',' + lng + '&radius=150&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
+            + lat + ',' + lng + '&radius=300&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
         $.ajax({
             url: placesURL,
             method: 'GET',
