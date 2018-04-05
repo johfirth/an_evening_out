@@ -6,8 +6,8 @@ var eventTypes = ['sports', 'concerts', 'theater']
 var emailInput;
 var passwordInput;
 $(document).ready(function () {
-    $('#newclient-form').hide();
-    $('#returnclient-form').hide();
+    $('#new-user-modal').hide();
+    $('#return-user-modal').hide();
     // $('#search-container').hide();
 
     function cardCreate(response) {
@@ -104,15 +104,23 @@ $(document).ready(function () {
 
 
     $('#newsign-in').on('click', function () {
-        $('#newclient-form').show();
+        $('#new-user-modal').show();
         $('#newsign-in').hide();
         $('#returnUser').hide();
     });
     $('#returnUser').on('click', function () {
-        $('#returnclient-form').show();
+        $('#return-user-modal').show();
         $('#newsign-in').hide();
         $('#returnUser').hide();
     });
+
+    $('.close').on('click', function(){
+        $('#new-user-modal').hide();
+        $('#return-user-modal').hide();
+        $('#newsign-in').show();
+        $('#returnUser').show();
+        
+    })
 
     var config = {
         apiKey: "AIzaSyDCVf4BToH0S_xwSGgkaxSQUs2wKeuWVoI",
