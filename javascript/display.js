@@ -11,8 +11,8 @@ $(document).ready(function () {
     // $('#search-container').hide();
 
     function cardCreate(response) {
-        var newResultCard = $('<div class = "card col-md-6">');
-        var cardTitle = $('<h4 class="card-title text-center">');
+        var newResultCard = $('<div class = "card">');
+        var cardTitle = $('<div class="card-header text-center">');
         var cardInfo = $('<p class = "text-center">');
         var cardImage = $('<img>');
         var cardButton = $('<a class = "btn btn-default">');
