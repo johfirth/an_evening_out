@@ -22,7 +22,7 @@ $(document).ready(function () {
         var buttonLink = response._embedded.events[0].url;
         var eventImageSized;
         var eventDate = response._embedded.events[0].dates.start.localDate;
-        var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))
+        var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))        
         // correctImageSize(eventImages);
         cardTitle.text(eventName);
         newResultCard.append(cardTitle);
@@ -47,7 +47,7 @@ $(document).ready(function () {
             $.ajax({
                 url: tmQueryURL,
                 method: 'GET',
-            }).then(function (response) { cardCreate(response).then(foodSearch(response)) })
+            }).then(function (response) { foodSearch(response) })
         }
     };
     function movieDisplay() {
@@ -63,6 +63,7 @@ $(document).ready(function () {
 
     $('#search-button').on("click", function () {
         $('#result-field').empty();
+        $('#food-field').empty();
         locationInput = $('#location-input').val().trim();
         dateInput = $('#date-input').val();
         $('#location-input').val('');
@@ -77,6 +78,7 @@ $(document).ready(function () {
     })
 
     function foodSearch(response) {
+        cardCreate(response);
         var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
         var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
         var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
@@ -88,10 +90,13 @@ $(document).ready(function () {
             var newResultCard = $('<div class = "card">');
             var cardTitle = $('<div class="card-header text-center">');
             var cardInfo =$('<p class = "text-center">');
+            var verticalSpace = $('<br>')
             placesToEat = foodResponse.results[0].name;
+            console.log(response)
             cardTitle.text(placesToEat);
             newResultCard.append(cardTitle)
             $('#food-field').append(newResultCard);
+            $('#food-field').append(verticalSpace);
          
         })
     }
