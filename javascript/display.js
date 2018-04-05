@@ -16,6 +16,7 @@ $(document).ready(function () {
         var cardInfo = $('<p class = "text-center">');
         var cardImage = $('<img>');
         var cardButton = $('<a class = "btn btn-default">');
+        var verticalSpace = $('<br>')
         var eventName = response._embedded.events[0].name;
         var eventImages = response._embedded.events[0].images;
         var buttonLink = response._embedded.events[0].url;
@@ -33,6 +34,7 @@ $(document).ready(function () {
         cardButton.attr('href', buttonLink);
         newResultCard.append(cardButton);
         $('#result-field').append(newResultCard);
+        $('#result-field').append(verticalSpace);
         console.log(response)
 
     }
@@ -68,7 +70,7 @@ $(document).ready(function () {
         dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD')) + 'T00:00:01Z';
         dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD')) + 'T11:59:00Z';
         eventDisplay();
-        movieDisplay();
+        // movieDisplay();
 
 
 
@@ -89,7 +91,7 @@ $(document).ready(function () {
             placesToEat = foodResponse.results[0].name;
             cardTitle.text(placesToEat);
             newResultCard.append(cardTitle)
-            $('#result-field').append(newResultCard);
+            $('#food-field').append(newResultCard);
          
         })
     }
