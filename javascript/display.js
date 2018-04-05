@@ -140,23 +140,23 @@ $(document).ready(function () {
     var oldPassword = '';
 
     function newUser() {
-        event.preventDefault();
+        // event.preventDefault();
         email = $('#newemailInput').val();
         password = $('#newpasswordInput').val();
         console.log(email);
         console.log(password);
     }
     function oldUser() {
-        event.preventDefault();
+        // event.preventDefault();
         oldEmail = $('#oldEmail').val();
         oldPassword = $('#oldPassword').val();
         console.log(email);
         console.log(password);
     }
 
-    $('#signupUser').on('click', function () {
+    $('#signupUser').on('click', function (event) {
+        event.preventDefault();
         newUser(email, password);
-
         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -169,7 +169,8 @@ $(document).ready(function () {
         $('#new-user-modal').hide();
     });
 
-    $('#sign-in').on('click', function () {
+    $('#sign-in').on('click', function (event) {
+        event.preventDefault();
         oldUser();
         firebase.auth().signInWithEmailAndPassword(oldEmail, oldPassword).catch(function (error) {
             var errorCode = error.code;
