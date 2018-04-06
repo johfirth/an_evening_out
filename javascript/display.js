@@ -8,7 +8,7 @@ var passwordInput;
 $(document).ready(function () {
     $('#new-user-modal').hide();
     $('#return-user-modal').hide();
-    // $('#search-container').hide();
+    $('#search-container').hide();
 
     function cardCreate(response) {
         var newResultCard = $('<div class = "card">');
@@ -22,7 +22,7 @@ $(document).ready(function () {
         var buttonLink = response._embedded.events[0].url;
         var eventImageSized;
         var eventDate = response._embedded.events[0].dates.start.localDate;
-        var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))        
+        var formattedEventDate = (moment(eventDate).format('dddd, MMMM Do'))
         // correctImageSize(eventImages);
         cardTitle.text(eventName);
         newResultCard.append(cardTitle);
@@ -78,19 +78,21 @@ $(document).ready(function () {
     })
 
     var OpenForBusiness;
-    
-    function youOpen (isOpen){
-        if (isOpen === true){
+
+    function youOpen(isOpen) {
+        if (isOpen === true) {
             OpenForBusiness = "Open"
         } else {
-        OpenForBusiness = "Closed"}}
+            OpenForBusiness = "Closed"
+        }
+    }
 
 
     function foodSearch(response) {
         cardCreate(response);
         var lat = response._embedded.events[0]._embedded.venues[0].location.latitude
         var lng = response._embedded.events[0]._embedded.venues[0].location.longitude
-        var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' 
+        var placesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
             + lat + ',' + lng + '&radius=300&type=restaurant&key=AIzaSyB_CLJMgjvx29O0bsd-6Ao_k3zgs9tMz98'
         $.ajax({
             url: placesURL,
@@ -98,8 +100,8 @@ $(document).ready(function () {
         }).then(function (foodResponse) {
             var newResultCard = $('<div class = "card">');
             var cardTitle = $('<div class="card-header text-center">');
-            var cardInfo1 =$('<p class = "text-center">');
-            var cardInfo2 =$('<p class = "text-center">');
+            var cardInfo1 = $('<p class = "text-center">');
+            var cardInfo2 = $('<p class = "text-center">');
             var verticalSpace = $('<br>')
             var isOpen = foodResponse.results[0].opening_hours.open_now
             var rating = foodResponse.results[0].rating
@@ -114,13 +116,9 @@ $(document).ready(function () {
             newResultCard.append(cardInfo2)
             $('#food-field').append(newResultCard);
             $('#food-field').append(verticalSpace);
-         
+
         })
     }
-
-
-
-
 
     $('#newsign-in').on('click', function () {
         $('#new-user-modal').show();
@@ -133,12 +131,12 @@ $(document).ready(function () {
         $('#returnUser').hide();
     });
 
-    $('.close').on('click', function(){
+    $('.close').on('click', function () {
         $('#new-user-modal').hide();
         $('#return-user-modal').hide();
         $('#newsign-in').show();
         $('#returnUser').show();
-        
+
     })
 
     var config = {
@@ -150,6 +148,7 @@ $(document).ready(function () {
         messagingSenderId: "1066374942062"
     };
     firebase.initializeApp(config);
+    var database = firebase.database();
 
     var email = '';
     var password = '';
@@ -157,20 +156,27 @@ $(document).ready(function () {
     var oldPassword = '';
 
     function newUser() {
-        // event.preventDefault();
         email = $('#newemailInput').val();
         password = $('#newpasswordInput').val();
-        console.log(email);
-        console.log(password);
-    }
+    };
     function oldUser() {
-        // event.preventDefault();
         oldEmail = $('#oldEmail').val();
         oldPassword = $('#oldPassword').val();
         console.log(email);
         console.log(password);
-    }
-
+    };
+    function newUserData() {
+        newUser();
+        database.ref().push({
+            email: email,
+            password: password,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+        database.ref().on("child_added", function (childSnapshot) {
+            console.log(childSnapshot.val().email);
+            console.log(childSnapshot.val().password);
+        });
+    };
     $('#signupUser').on('click', function (event) {
         event.preventDefault();
         newUser(email, password);
@@ -181,21 +187,22 @@ $(document).ready(function () {
                 console.log(error);
             };
         })
+        newUserData();
         $('#search-container').show();
         $('#signupUser').hide();
         $('#new-user-modal').hide();
     });
 
-    $('#sign-in').on('click', function (event) {
+    $('#signinUser').on('click', function (event) {
         event.preventDefault();
         oldUser();
         firebase.auth().signInWithEmailAndPassword(oldEmail, oldPassword).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
         });
-       $('#search-container').show();
-       $('#sign-in').hide();
-       $('#return-user-modal').hide();
+        $('#search-container').show();
+        $('#sign-in').hide();
+        $('#return-user-modal').hide();
     });
 
 });
