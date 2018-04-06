@@ -3,3 +3,35 @@
         height: 400px;
         background-color: grey;
       }
+.img1 {
+  height: 250px;
+  width: 250px;
+}  
+.img2 {
+  height: 250px;
+  width: 250px;
+}     
+.img3 {
+  height: 250px;
+  width: 250px;
+}     
+.img4 {
+  height: 250px;
+  width: 250px;
+}   
+#container1 {
+  position: sticky;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: inherit;
+  width: 50%;
+}
+#container2 {
+  position: sticky;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+

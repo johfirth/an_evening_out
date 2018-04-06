@@ -191,6 +191,7 @@ $(document).ready(function () {
         $('#search-container').show();
         $('#signupUser').hide();
         $('#new-user-modal').hide();
+        $('#imageContainer').hide();
     });
 
     $('#signinUser').on('click', function (event) {
@@ -203,6 +204,7 @@ $(document).ready(function () {
         $('#search-container').show();
         $('#sign-in').hide();
         $('#return-user-modal').hide();
+        $('#imageContainer').hide();
     });
 
 });

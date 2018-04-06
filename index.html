@@ -17,69 +17,69 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-
+    <link rel="stylesheet" href="C:\Users\atsch\Desktop\gw-bootcamp\an_evening_out\css\css.css">
 </head>
 <header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            Let's Go ...
-        </a>
+    <nav class="navbar navbar-light p-3 mb-2 bg-info text-white">
+        <nav class="navbar-brand font-weight-bold font-italic text-light" href="#">
+            Let's Plan an Evening
+        </nav>
         <ul class='nav nav-tabs'>
             <li class='nav-item'>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn" id='newsign-in'>Sign Up</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn" id='returnUser'>Sign In</button>
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#signIn" id='newsign-in'>Sign Up</button>
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#signIn" id='returnUser'>Sign In</button>
             </li>
         </ul>
         <div id="new-user-modal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Sign Up!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark font-weight-bold">Sign Up!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bg-info text-dark">
+                        <form id="newclient-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="text-dark">Email address</label>
+                                <input type="email" class="form-control" id="newemailInput" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-dark">Password</label>
+                                <input type="password" class="form-control" id="newpasswordInput" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id='signupUser'>Submit</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="newclient-form"> 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="newemailInput" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="newpasswordInput" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary" id='signupUser'>Submit</button>
-                    </form>
-                </div>
-              </div>
             </div>
         </div>
         <div id="return-user-modal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Welcome Back!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark font-weight-bold">Welcome Back!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bg-info text-dark">
+                        <form id="returnclient-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="oldEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id='signinUser'>Submit</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="returnclient-form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="oldEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="oldPassword" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary" id='signinUser'>Submit</button>
-                    </form>
-                </div>
-              </div>
             </div>
         </div>
     </nav>
@@ -87,6 +87,16 @@
 <br>
 
 <body>
+    <div id="imageContainer">
+        <div id="container1">
+            <img class="img1" src="images\bar image.jpg">
+            <img class="img2" src="images\concert image.jpg">
+        </div>
+        <div id="container2">
+            <img class="img3" src="images\dining out image.jpg">
+            <img class="img4" src="images\theater image.jpg">
+        </div>
+    </div>
     <section id='search-container' class='container-fluid'>
         <div class='row'>
             <div id="search-field" class='col-md-4 ml-3 sl-3'>
@@ -109,10 +119,10 @@
 
             </div>
             <section class="col-md-7 ml-5 row">
-                <div id="result-field" class = 'col-md-6'>
+                <div id="result-field" class='col-md-6'>
 
                 </div>
-                <div id = 'food-field' class = 'col-md-6'>
+                <div id='food-field' class='col-md-6'>
 
                 </div>
             </section>
