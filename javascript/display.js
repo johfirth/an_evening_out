@@ -71,21 +71,16 @@ $(document).ready(function () {
         dateFormattedStart = (moment(dateInput).format('YYYY-MM-DD')) + 'T00:00:01Z';
         dateFormattedEnd = (moment(dateInput).format('YYYY-MM-DD')) + 'T11:59:00Z';
         eventDisplay();
-        // movieDisplay();
-
-
-
-    })
+    });
 
     var OpenForBusiness;
-
     function youOpen(isOpen) {
         if (isOpen === true) {
             OpenForBusiness = "Open"
         } else {
             OpenForBusiness = "Closed"
         }
-    }
+    };
 
 
     function foodSearch(response) {
@@ -117,8 +112,8 @@ $(document).ready(function () {
             $('#food-field').append(newResultCard);
             $('#food-field').append(verticalSpace);
 
-        })
-    }
+        });
+    };
 
     $('#newsign-in').on('click', function () {
         $('#new-user-modal').show();
@@ -137,7 +132,7 @@ $(document).ready(function () {
         $('#newsign-in').show();
         $('#returnUser').show();
 
-    })
+    });
 
     var config = {
         apiKey: "AIzaSyDCVf4BToH0S_xwSGgkaxSQUs2wKeuWVoI",
@@ -186,7 +181,7 @@ $(document).ready(function () {
             if (errorCode == 'auth/weak-password') {
                 console.log(error);
             };
-        })
+        });
         newUserData();
         $('#search-container').show();
         $('#signupUser').hide();
